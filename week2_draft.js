@@ -1,9 +1,8 @@
 const express = require('express');
-var url = require('url')
+const url = require('url')
 
-const app = express();
-
-const port = 3000; // Choose any port you prefer
+const port = 3000;
+var app = express();
 
 // Define routes
 // http://localhost:3000/
@@ -23,36 +22,48 @@ app.get("/contact", (req, res) => {
 
 // http://localhost:3000/GetWeather
 // http://localhost:3000/GetWeather?year=2024&month=7
-app.get('/GetWeather', (req, res) => {
-  // Parse query parameters
-  const queryString = url.parse(req.url, true).query;
-  const year = queryString.year || new Date().getFullYear();
-  const month = queryString.month || new Date().getMonth()+1;;
+app.get('/GetWeather', (req, res) => 
+{
+  // Extracting query string's or settings as default values
+  var queryString = url.parse(req.url, true).query;
+  var year = queryString.year || new Date().getFullYear();
+  var month = queryString.month || new Date().getMonth()+1;
 
-  // Replace this with actual weather data retrieval logic
-  // For now, let's just return a sample response
-  const weatherData = {
+  // Creating the JSON response to return back as text
+  var weatherData = {
     year,
     month,
     temperature: randomIntFromInterval(10, 35), // Example temperature (you can fetch real data here)
     condition: getRandomWeatherCondition(), // Example weather condition
   };
 
+  // return the response code and return the weatherData as json format
   res.status(200).json(weatherData);
 });
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`Server accessible at http://localhost:${port}`);
   });
 
 
-  // Functions
+  // Extra Functions
 
+  /**
+   * Returns an integer value between the min and max values given.
+   * @param {*} min 
+   * @param {*} max 
+   * @returns integer
+   */
   function randomIntFromInterval(min, max) {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
+
+  /**
+   * This function picks a random weather condition ["Sunny", "Cloudy", "Rainy"] as a string
+   * @returns string
+   */
   function getRandomWeatherCondition() {
     const weatherConditions = ["Sunny", "Cloudy", "Rainy"];
     const randomIndex = Math.floor(Math.random() * weatherConditions.length);
