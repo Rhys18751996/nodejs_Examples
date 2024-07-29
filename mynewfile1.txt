@@ -1,1 +1,3 @@
-I am no different Hello content!
+I am now different Hello content!
+
+This line was added from inside a docker container
