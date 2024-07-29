@@ -20,8 +20,15 @@ git branch --all
 git remote add [name_of_your_remote] [name_of_your_new_branch]
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// add some changed/new files and commit
+git add .
+git commit -m "commit message"
+
+// set the upstream origin as your new branch
+git push --set-upstream origin myFirstBranch
+
 // Push changes from your commit into your branch
-git push [name_of_your_new_remote] [url]
+
 
 // Update your branch when the original branch from official repository has been updated
 git fetch [name_of_your_remote]
