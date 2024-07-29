@@ -19,20 +19,25 @@ git branch --all
 // Add a new remote for your branch
 git remote add [name_of_your_remote] [name_of_your_new_branch]
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // add some changed/new files and commit
 git add .
 git commit -m "commit message"
 
-// set the upstream origin as your new branch
+// push the changes and set the upstream origin as your new branch
 git push --set-upstream origin myFirstBranch
 
 // Push changes from your commit into your branch
-
+git push
 
 // Update your branch when the original branch from official repository has been updated
 git fetch [name_of_your_remote]
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Then you need to apply to merge changes if your branch is derivated from develop you need to do
 $ git merge [name_of_your_remote]/develop
 
