@@ -33,7 +33,21 @@ git push
 git fetch [name_of_your_remote]
 
 
+// to rebase or merge with main branch
+Method 1:
+Starting from myNewBranch
+- git checkout main
+- git pull
+- git checkout myNewBranch
+- git merge main
 
+
+Method 2:
+Starting from myNewBranch
+- git checkout main
+- git pull
+- git checkout myNewBranch
+- git rebase main
 
 
 
