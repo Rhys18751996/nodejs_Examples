@@ -3,6 +3,7 @@ const url = require('url')
 
 const port = 3000;
 var app = express();
+var fs = require('fs');
 
 // Define routes
 // http://localhost:3000/
@@ -13,6 +14,15 @@ app.get("/", (req, res) => {
 // http://localhost:3000/about
 app.get("/about", (req, res) => {
   res.send("About Page");
+});
+
+// http://localhost:3000/demofilePage
+app.get("/demofilePage", (req, res) => {
+  fs.readFile('./demofile1.html', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    return res.end();
+  });
 });
 
 // http://localhost:3000/contact
